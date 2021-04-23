@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import HomePage from './pages/Home';
+import DepositePage from './pages/Deposite';
+import WithdrawPage from './pages/Withdraw';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<div className="App">
+				<header className="App-header">
+					<ul className="ul-style">
+						<li className="li-style">
+							<NavLink to="/" className="App-link">Home</NavLink>
+						</li>
+						<li className="li-style">
+							<NavLink to="/deposite" className="App-link">Deposit</NavLink>
+						</li>
+						<li className="li-style">
+							<NavLink to="withdraw" className="App-link">Withdraw</NavLink>
+						</li>
+					</ul>
+					<Route path="/" exact component={HomePage} />
+					<Route path="/deposite" exact component={DepositePage} />
+					<Route path="/withdraw" exact component={WithdrawPage} />
+				</header>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;
